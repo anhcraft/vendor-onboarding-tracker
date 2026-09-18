@@ -1,0 +1,277 @@
+:root {
+  --bg: #f3efe6;
+  --bg-card: #fffdf8;
+  --ink: #1f1a14;
+  --muted: #6d645a;
+  --line: #d9d0c3;
+  --accent: #0f4c5c;
+  --accent-hover: #0a3540;
+  --stuck-bg: #f8e1b5;
+  --stuck-ink: #6b3a00;
+  --error-bg: #fde8e8;
+  --error-ink: #8a1f1f;
+  --shadow: 0 12px 32px rgba(31, 26, 20, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+}
+
+h1 {
+  margin: 0 0 0.35rem;
+  font-size: 1.75rem;
+  font-family: Georgia, "Times New Roman", serif;
+  letter-spacing: -0.02em;
+}
+
+.lede,
+.muted {
+  margin: 0;
+  color: var(--muted);
+}
+
+.page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.page--login {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.session {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--muted);
+}
+
+.card {
+  width: min(100%, 26rem);
+  padding: 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+.login-form,
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.login-form {
+  margin-top: 1.25rem;
+  gap: 1rem;
+}
+
+.field span {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+.stage-select,
+.button {
+  font: inherit;
+}
+
+input,
+.stage-select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+}
+
+input:focus,
+.stage-select:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.button {
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+.button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.button--ghost {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--line);
+}
+
+.button--ghost:hover:not(:disabled) {
+  background: #e8f2f4;
+}
+
+.alert {
+  margin: 1rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+}
+
+.alert--error {
+  background: var(--error-bg);
+  color: var(--error-ink);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.vendor-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+
+.vendor-table th,
+.vendor-table td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+
+.vendor-table th {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.vendor-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.vendor-row--stuck td {
+  background: var(--stuck-bg);
+  color: var(--stuck-ink);
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+}
+
+.stage-select {
+  min-width: 13.5rem;
+}
+
+.stage-select option:disabled {
+  color: #9a9188;
+}
+
+.confirm-dialog {
+  width: min(100% - 2rem, 28rem);
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+}
+
+.confirm-dialog::backdrop {
+  background: rgba(31, 26, 20, 0.45);
+}
+
+.confirm-dialog h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.confirm-dialog p {
+  margin: 0 0 1.25rem;
+  color: var(--muted);
+}
+
+.confirm-dialog__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.history-dialog {
+  width: min(100% - 2rem, 46rem);
+  max-height: min(90vh, 40rem);
+}
+
+.history-dialog .lede {
+  margin-bottom: 1rem;
+}
+
+.history-table-wrap {
+  overflow: auto;
+  max-height: 24rem;
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.history-table th,
+.history-table td {
+  padding: 0.7rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.history-table th {
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+.history-table tr:last-child td {
+  border-bottom: 0;
+}

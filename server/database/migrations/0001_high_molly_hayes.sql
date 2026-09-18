@@ -1,0 +1,1 @@
+CREATE INDEX "vendor_process_vendor_created_idx" ON "vendor_process" USING btree ("vendor_id","created_at");
