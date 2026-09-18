@@ -58,17 +58,19 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  await db.insert(vendorProcess).values({
-    vendorId,
-    userId: user.id,
-    prevStage: latest.newStage,
-    newStage: stage,
-  })
+  await db.transaction(async (tx) => {
+    await tx.insert(vendorProcess).values({
+      vendorId,
+      userId: user.id,
+      prevStage: latest.newStage,
+      newStage: stage,
+    })
 
-  await db
-    .update(vendors)
-    .set({ updatedAt: new Date() })
-    .where(eq(vendors.id, vendorId))
+    await tx
+      .update(vendors)
+      .set({ updatedAt: new Date() })
+      .where(eq(vendors.id, vendorId))
+  })
 
   return { ok: true }
 })
