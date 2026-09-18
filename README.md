@@ -83,8 +83,9 @@ stateDiagram-v2
     + Vendor data is mocked
     + There is no vendor creation and deletion
     + A vendor is considered "stuck" if its last-update timestamp was exactly or more than 7 days old.
-    + The dataset is small (and for demostrating purpose) such that pagination is not required
-    + Vendor stage transition is non-reversible
+    + Vendor region is an arbitrary string input as there is no clarification that vendors are Vietnam-based
+    + The dataset is small (and for demonstrating purpose) such that pagination is not required
+    + Vendor stage transition is non-reversible. In addition, it follows a linear, step-by-step model.
 - No extra features such as compliance review system, vendor activation system, notification/reminders, real-time updates
 - No production deployment infra
 
@@ -94,7 +95,10 @@ stateDiagram-v2
 - Neon DB, Drizzle
 - Plain CSS
 
-#### 2.3. Database Schema
+#### 2.3. Technical decisions
+- Nuxt: fast to implement. In addition, the validation logic stays consistent across client and server
+
+#### 2.4. Database Schema
 ```
 Users:
 - ID: UUID (PK)
@@ -137,12 +141,11 @@ Enums (moved to application-level):
 	- `huy` / Huy
 	- `mai` / Mai
 
-#### 2.4. Potential Improvements
+#### 2.5. Potential Improvements
 
 If I have more time, the following features could be implemented since they fit within the business context.
 - Support an additional role: Sales IPC
 - Vendor creation
-- Vendor region as a persistent table
 - Pagination support
 - User administration
 - Enterprise SSO
@@ -153,7 +156,7 @@ Other features are considered unnecessary for an internal/backoffice tool:
 - Vendor deletion
 - Real-time updates
 
-### 2.5. Testing
+### 2.6. Testing
 - Unit Testing:
 	+ Process stage transition
 	+ Vendor stuck identification
